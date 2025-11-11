@@ -1,0 +1,221 @@
+/* Fundo da página com degradê */
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Impact, Arial, Helvetica, sans-serif;
+  font-weight: normal; /* força a não ficar bold */
+  background: linear-gradient(to bottom, #0a1a2a, #3725d6);
+  position: relative; /* necessário pro botão no canto */
+}
+
+/* Botão voltar */
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  text-align: center;
+  color: #fff;
+  font-size: 12px;
+  font-weight: normal; /* remove bold */
+}
+
+.back-button img {
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+  border-radius: 50%;   /* deixa redondo */
+  object-fit: cover;    /* garante que a imagem se ajuste dentro do círculo */
+  border: 2px solid #fff; /* contorno opcional pra destacar */
+}
+
+.back-button p {
+  margin: 5px 0 0;
+  font-weight: normal; /* remove bold */
+}
+
+/* Quadro externo */
+.outer-container {
+  background-color: #011223;
+  padding: 25px;
+  border-radius: 25px;
+  box-shadow: 0 0 18px rgba(0,0,0,0.5);
+}
+
+/* Quadro interno */
+.inner-container {
+  background-color: #052c53;
+  width: 650px;
+  height: 300px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 35px;
+}
+
+/* Lado esquerdo (texto e botões) */
+.left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.left h1 {
+  font-size: 22px;
+  font-weight: normal; /* antes estava bold */
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.btn {
+  background-color: #000;
+  color: #fff;
+  padding: 10px 35px;
+  border: 2px solid #000;   /* borda preta */
+  border-radius: 25px;
+  font-weight: normal; /* antes estava bold */
+  cursor: pointer;
+  margin: 10px 0;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  background-color: #222;
+  border-color: #fff;
+}
+
+.text-small {
+  font-size: 13px;
+  margin: 8px 0;
+  font-weight: normal;
+}
+
+/* Lado direito (imagem) */
+.right img {
+  max-width: 260px;
+}
+
+/* ===========================
+   RESPONSIVIDADE – TABLET (até 1024px)
+============================= */
+@media (max-width: 1024px) {
+  .inner-container {
+    width: 550px;
+    height: 280px;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .left h1 {
+    font-size: 20px;
+  }
+
+  .btn {
+    padding: 8px 30px;
+    font-size: 13px;
+  }
+
+  .text-small {
+    font-size: 12px;
+  }
+
+  .right img {
+    max-width: 220px;
+  }
+}
+
+/* ===========================
+   RESPONSIVIDADE – CELULAR (até 768px)
+============================= */
+@media (max-width: 768px) {
+  .outer-container {
+    padding: 20px;
+  }
+
+  .inner-container {
+    width: 90%;
+    height: auto;
+    flex-direction: column;
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .left h1 {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  .btn {
+    padding: 8px 25px;
+    font-size: 13px;
+  }
+
+  .text-small {
+    font-size: 12px;
+  }
+
+  .right img {
+    max-width: 180px;
+  }
+
+  .back-button {
+    top: 15px;
+    left: 15px;
+  }
+
+  .back-button img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .back-button p {
+    font-size: 11px;
+  }
+}
+
+/* ===========================
+   RESPONSIVIDADE – CELULAR PEQUENO (até 480px)
+============================= */
+@media (max-width: 480px) {
+  .inner-container {
+    width: 95%;
+    height: auto;
+    padding: 12px;
+  }
+
+  .left h1 {
+    font-size: 16px;
+  }
+
+  .btn {
+    padding: 6px 20px;
+    font-size: 12px;
+  }
+
+  .text-small {
+    font-size: 11px;
+  }
+
+  .right img {
+    max-width: 140px;
+  }
+
+  .back-button img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .back-button p {
+    font-size: 10px;
+  }
+}

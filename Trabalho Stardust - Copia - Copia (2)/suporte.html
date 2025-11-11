@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stardust Portal Games - Suporte</title>
+  <link rel="stylesheet" href="suporte.css">
+</head>
+<body class="theme-dark">
+
+  <!-- Faixa preta lateral -->
+  <div class="faixa-preta"></div>
+
+  <header>
+    <!-- Logo + Título -->
+    <div class="logo-box">
+      <a href="index.html">
+  <img src="stardust.png" alt="Stardust Logo" class="logo">
+      </a>
+      <div class="title">
+        <span class="stardust">STARDUST</span>
+        <span class="portal">PORTAL GAMES</span>
+      </div>
+    </div>
+
+    <!-- Menu centralizado -->
+    <nav>
+      <ul>
+        <li><a href="noticias.html">NOTÍCIAS</a></li>
+        <li class="dropdown">
+          <a href="#" class="empresa">
+            EMPRESA <span class="seta"></span>
+          </a>
+          <ul class="submenu">
+            <li><a href="sobre.html">Sobre Nós</a></li>
+            <li><a href="redes.html">Redes Sociais</a></li>
+          </ul>
+        </li>
+        <li><a href="#">LOJA</a></li>
+        <li class="dropdown">
+          <a href="#" class="exclamacao">
+            ! <span class="seta"></span>
+          </a>
+          <ul class="submenu">
+            <li><a href="login.html">Conta</a></li>
+            <li><a href="suporte.html">Suporte</a></li>
+            <li class="dropdown">
+              <a href="#">Configurações <span class="seta"></span></a>
+              <ul class="submenu">
+                <li><a href="#"><img src="brasil.jpg" alt="PT" class="flag"> PT</a></li>
+                <li><a href="#"><img src="eua.jpg" alt="ING" class="flag"> ING</a></li>
+                <li><a href="#"><img src="espanha.jpg" alt="ESP" class="flag"> ESP</a></li>
+                <li><a href="#"><img src="china.jpg" alt="MD" class="flag"> MD</a></li>
+                <li class="tema">
+                  Tema:
+                  <button class="theme-btn" data-theme="dark">Escuro</button>
+                  <button class="theme-btn" data-theme="light">Claro</button>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Lupa no canto superior direito -->
+    <div class="icons">
+      <a href="#" class="search-toggle">
+        <img src="lupa.png" alt="Pesquisar" class="icon">
+      </a>
+      <input type="text" class="search-bar" placeholder="Pesquisar...">
+    </div>
+
+<div class="hamburger">
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+
+  </header>
+
+  <!-- Conteúdo de Suporte -->
+  <div class="support-container">
+    <!-- Barra de busca -->
+    <div class="support-box">
+      <h2>BUSCAR</h2>
+      <form class="support-bar" action="https://www.google.com/search" method="get" target="_blank">
+        <input type="text" name="q" placeholder="BUSCAR NO SUPORTE DA STARDUST">
+        <button type="submit">
+          <img src="lupa.png" alt="Buscar">
+        </button>
+      </form>
+    </div>
+
+    <!-- Tópicos -->
+    <div class="topics">
+      <h3>TÓPICOS MAIS POPULARES</h3>
+      <div class="topic-grid">
+        <button class="topic-btn"><img src="alerta.png" alt="!"> PROBLEMAS COM A CONTA</button>
+        <button class="topic-btn"><img src="alerta.png" alt="!"> PROBLEMAS COM A COMPRA</button>
+        <button class="topic-btn"><img src="alerta.png" alt="!"> PROBLEMAS COM O LOGIN</button>
+        <button class="topic-btn"><img src="alerta.png" alt="!"> OUTROS</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Barra de pesquisa navbar
+    const searchToggle = document.querySelector('.search-toggle');
+    const searchBar = document.querySelector('.search-bar');
+
+    searchToggle.addEventListener('click', e => {
+      e.preventDefault();
+      searchBar.classList.toggle('active');
+      if(searchBar.classList.contains('active')) searchBar.focus();
+    });
+
+    // Mudança de tema
+    const themeButtons = document.querySelectorAll('.theme-btn');
+    themeButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const theme = btn.getAttribute('data-theme');
+        document.body.className = theme === 'dark' ? 'theme-dark' : 'theme-light';
+      });
+    });
+  </script>
+
+  <!-- Botão de Chat -->
+<div class="chat-wrapper">
+  <span class="chat-label">Chat</span>
+  <img src="chat.png" alt="Chat" class="chat-btn">
+</div>
+
+<script>
+  const hamburger = document.querySelector('.hamburger');
+  const menu = document.querySelector('nav ul');
+
+  hamburger.addEventListener('click', () => {
+    menu.classList.toggle('active');
+  });
+
+  // ----- ATIVAR SUBMENUS POR TOQUE -----
+  const dropdowns = document.querySelectorAll('.dropdown > a');
+
+  dropdowns.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const parent = link.parentElement;
+
+      // só executa em mobile
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        parent.classList.toggle('open');
+      }
+    });
+  });
+</script>
+
+
+</body>
+</html>

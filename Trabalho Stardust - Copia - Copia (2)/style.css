@@ -1,0 +1,678 @@
+/* Fonte geral */
+body {
+  margin: 0;
+  font-family: Impact, Arial, sans-serif;
+  height: 100vh;
+  color: white;
+  transition: background 0.5s, color 0.5s;
+}
+
+/* Temas */
+body.theme-dark {
+  background: linear-gradient(90deg, #011223, #3533cd);
+  color: white;
+}
+body.theme-light {
+  background: linear-gradient(90deg, #ffffff, #afafaf, #525252);
+  color: rgb(255, 255, 255);
+}
+
+/* Faixa preta lateral esquerda */
+.faixa-preta {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 100%;
+  background: black;
+  z-index: 900;
+}
+
+/* Barra superior */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: black;
+  padding: 10px 30px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+/* Logo + texto */
+.logo-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.logo {
+  height: 70px;
+}
+.title {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+.stardust {
+  font-size: 24px;
+  color: white;
+}
+.portal {
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: white;
+}
+
+/* Menu centralizado próximo ao logo */
+nav {
+  flex: 1;
+  margin-left: 150px;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 170px;
+}
+
+nav ul li {
+  position: relative;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 6px 10px;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover {
+  color: #1b96f3;
+}
+
+/* Botão ! estilizado */
+.exclamacao {
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  padding: 4px 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+}
+
+/* Dropdowns */
+.dropdown .submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #111;
+  padding: 10px;
+  border-radius: 5px;
+  list-style: none;
+  min-width: 140px;
+  z-index: 999;
+}
+.dropdown:hover > .submenu {
+  display: block;
+}
+.submenu li {
+  margin: 5px 0;
+}
+.submenu li a {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Submenus aninhados (como Configurações) */
+.submenu .dropdown {
+  position: relative;
+}
+.submenu .dropdown .submenu {
+  top: 0;
+  left: 100%;
+  transform: translateX(0);
+  display: none;
+}
+.submenu .dropdown:hover > .submenu {
+  display: block;
+}
+
+/* Seta dropdown */
+.seta {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid white;
+  transition: transform 0.3s ease;
+  margin-left: 4px;
+}
+.dropdown:hover > a .seta {
+  transform: rotate(180deg);
+}
+
+/* Ícone de lupa no canto superior direito da navbar */
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: absolute;
+  right: 70px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.icons .icon {
+  height: 32px;
+  width: 32px;
+  filter: brightness(0) invert(1);
+  cursor: pointer;
+  transition: filter 0.3s;
+}
+.icons .icon:hover {
+  filter: invert(53%) sepia(92%) saturate(2359%) hue-rotate(197deg) brightness(92%) contrast(90%);
+}
+
+/* Barra de pesquisa escondida */
+.search-bar {
+  width: 0;
+  padding: 0 10px;
+  opacity: 0;
+  border: none;
+  border-radius: 20px;
+  transition: all 0.4s ease;
+  font-size: 14px;
+  outline: none;
+  background-color: white;
+  color: black;
+}
+.search-bar.active {
+  width: 180px;
+  opacity: 1;
+  padding: 4px 10px;
+}
+
+/* Bandeiras */
+.flag {
+  width: 20px;
+  height: 14px;
+}
+
+/* Botões de tema */
+.theme-btn {
+  margin-left: 5px;
+  padding: 2px 6px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.theme-btn:hover {
+  background: #1b96f3;
+  color: white;
+}
+
+/* Seção Poppy Playtime */
+.poppy-section {
+  margin-top: 130px;
+  padding: 30px 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.poppy-container {
+  max-width: 1100px;
+  width: 100%;
+  display: flex;
+  flex-direction: row; /* mudou para linha */
+  align-items: flex-start; /* para alinhar topo */
+  gap: 30px;
+}
+
+
+.poppy-main-image img {
+  width: 500px;
+  border-radius: 10px;
+  cursor: pointer;
+  user-select: none;
+  transition: box-shadow 0.3s ease;
+}
+.poppy-main-image img:hover {
+  box-shadow: 0 0 15px 5px #1b96f3;
+}
+
+.poppy-description {
+  font-size: 18px;
+  max-width: 600px;
+  font-family: Impact, Arial, sans-serif;
+  text-align: justify;
+  color: white;
+}
+
+.first-letter {
+  font-size: 40px;
+  font-weight: bold;
+  float: left;
+  line-height: 1;
+  margin-right: 8px;
+  color: #1b96f3;
+}
+
+.poppy-gallery {
+  display: flex;
+  gap: 20px;
+}
+
+.poppy-gallery img.gallery-thumb {
+  width: 150px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+  user-select: none;
+}
+.poppy-gallery img.gallery-thumb:hover {
+  box-shadow: 0 0 12px 3px #1b96f3;
+}
+
+.poppy-container {
+  max-width: 1100px;
+  width: 100%;
+  display: flex;
+  flex-direction: column; /* alinhamento vertical */
+  align-items: center;    /* centraliza horizontalmente */
+  gap: 30px;
+}
+
+.support-container {
+  /* removido margin-left */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  max-width: 250px; /* mantém tamanho da barra */
+  width: 100%;
+  margin-top: 10px; /* espaçamento entre imagem e barra */
+}
+
+/* Barra de pesquisa fixa topo esquerdo, dentro da área azul */
+.top-left-search {
+  position: fixed;
+  top: 100px; /* distância do topo da tela */
+  left: 80px; /* após a faixa preta (60px) + margem */
+  background: transparent;
+  z-index: 1100;
+  max-width: 250px;
+}
+
+.support-box h2 {
+  font-family: Impact, Arial, sans-serif;
+  font-size: 20px;
+  color: white;
+  margin-bottom: 12px;
+}
+
+.support-bar {
+  display: flex;
+  width: 100%;
+}
+
+.support-bar input[type="text"] {
+  flex: 1;
+  padding: 8px 12px;
+  border: 2px solid #042241;
+  border-right: none;
+  border-radius: 6px 0 0 6px;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  outline: none;
+  background: #063564;
+  color: white;
+}
+
+.support-bar input[type="text"]::placeholder {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.support-bar button {
+  background-color: #042241;
+  border: 2px solid #042241;
+  border-radius: 0 6px 6px 0;
+  padding: 0 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.support-bar button:hover {
+  background-color: #042241;
+  border-color: #042241;
+}
+
+.support-bar button img {
+  width: 18px;
+  height: 18px;
+  filter: invert(10%);
+}
+
+/* ===========================
+   RESPONSIVIDADE – TABLET
+   =========================== */
+@media screen and (max-width: 1024px) {
+  nav ul {
+    gap: 60px;
+    margin-left: 50px;
+  }
+
+  .logo {
+    height: 60px;
+  }
+
+  header {
+    padding: 10px 15px;
+  }
+
+  /* Submenu não sai da tela */
+  .submenu .dropdown .submenu {
+    left: -100%;
+  }
+}
+
+
+/* ===========================
+   RESPONSIVIDADE – CELULAR
+   =========================== */
+@media screen and (max-width: 768px) {
+
+  /* Desativa dropdown por hover no mobile */
+  .dropdown:hover > .submenu {
+    display: none;
+  }
+
+  /* MENU HAMBÚRGUER */
+  .hamburger {
+    display: block;
+    cursor: pointer;
+    width: 35px;
+    height: 28px;
+    position: absolute;
+    right: 45px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .hamburger div {
+    width: 100%;
+    height: 4px;
+    background: white;
+    margin: 5px 0;
+    transition: 0.3s;
+  }
+
+  /* Esconde o menu inicialmente */
+  nav ul {
+    display: none;
+    flex-direction: column;
+    background: #000;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 200px;
+    padding: 10px;
+    border-radius: 10px 0 0 10px;
+    gap: 20px;
+  }
+
+  /* Mostra o menu quando ativado */
+  nav ul.active {
+    display: flex;
+  }
+
+  /* Ajusta dropdowns */
+  .dropdown .submenu {
+    position: static;
+    transform: none;
+    background: #111;
+    border-radius: 8px;
+    margin-left: 10px;
+  }
+
+  .submenu .dropdown .submenu {
+    left: 0;
+  }
+
+  /* Ajusta logo e título */
+  .logo {
+    height: 50px;
+  }
+  .stardust {
+    font-size: 18px;
+  }
+
+  /* Lupa desce para dentro do menu */
+  .icons {
+    right: 90px;
+  }
+}
+
+
+/* ===========================
+   RESPONSIVIDADE – TELAS MUITO PEQUENAS
+   =========================== */
+@media screen and (max-width: 480px) {
+  nav ul {
+    width: 170px;
+  }
+
+  .dropdown .submenu {
+    font-size: 12px;
+  }
+
+  /* Submenu mais compacto */
+  .submenu {
+    min-width: 110px;
+  }
+
+  .logo {
+    height: 45px;
+  }
+}
+
+/* Ativa submenus por clique no mobile */
+@media (max-width: 768px) {
+
+  .dropdown > a {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    cursor: pointer;
+  }
+
+  .dropdown.open > .submenu {
+    display: block !important;
+  }
+
+  /* Remove o hover no mobile */
+  .dropdown:hover > .submenu {
+    display: none;
+  }
+}
+
+/* ============================
+   📱 TABLET (até 1024px)
+============================= */
+@media (max-width: 1024px) {
+
+  nav {
+    margin-left: 80px;
+  }
+
+  nav ul {
+    gap: 60px;
+  }
+
+  .poppy-section {
+    padding: 30px 40px;
+  }
+
+  .poppy-main-image img {
+    width: 380px;
+  }
+
+  .poppy-gallery img.gallery-thumb {
+    width: 120px;
+  }
+
+  .poppy-description {
+    font-size: 17px;
+  }
+
+  .top-left-search {
+    left: 70px;
+  }
+
+  .faixa-preta {
+    width: 50px;
+  }
+}
+  
+
+/* ============================
+   📱📱 CELULAR (até 768px)
+============================= */
+@media (max-width: 768px) {
+
+  /* Remove faixa lateral */
+  .faixa-preta {
+    width: 0;
+  }
+
+  /* Navbar mais compacta */
+  header {
+    padding: 8px 15px;
+  }
+
+  .logo {
+    height: 50px;
+  }
+
+  .stardust {
+    font-size: 18px;
+  }
+
+  nav {
+    margin-left: 0;
+  }
+
+  nav ul {
+    flex-direction: column;
+    position: absolute;
+    top: 80px;
+    right: 0;
+    background: #000;
+    width: 70%;
+    padding: 20px;
+    gap: 20px;
+    display: none;
+  }
+
+  nav ul.active {
+    display: flex;
+  }
+
+  .icons {
+    right: 90px;
+  }
+
+  /* Elementos Poppy */
+  .poppy-section {
+    margin-top: 150px;
+    padding: 20px;
+  }
+
+  .poppy-main-image img {
+    width: 300px;
+  }
+
+  .poppy-gallery {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .poppy-gallery img.gallery-thumb {
+    width: 110px;
+  }
+
+  .poppy-description {
+    font-size: 16px;
+    max-width: 90%;
+  }
+
+  /* Pesquisa lateral */
+  .top-left-search {
+    position: relative;
+    top: 10px;
+    left: 0;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  .support-container {
+    max-width: 280px;
+    margin: auto;
+    align-items: center;
+  }
+}
+
+
+/* ============================
+   📱📱📱 CELULAR PEQUENO (até 480px)
+============================= */
+@media (max-width: 480px) {
+
+  header {
+    padding: 6px 10px;
+  }
+
+  .logo {
+    height: 42px;
+  }
+
+  .stardust {
+    font-size: 16px;
+  }
+
+  .portal {
+    font-size: 10px;
+  }
+
+  .poppy-main-image img {
+    width: 250px;
+  }
+
+  .poppy-gallery img.gallery-thumb {
+    width: 95px;
+  }
+
+  .poppy-description {
+    font-size: 15px;
+  }
+}

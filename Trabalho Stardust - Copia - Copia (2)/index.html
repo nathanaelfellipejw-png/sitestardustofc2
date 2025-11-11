@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stardust Portal Games</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="theme-dark">
+
+  <!-- Faixa preta lateral -->
+  <div class="faixa-preta"></div>
+
+  <header>
+    <!-- Logo + Título -->
+    <div class="logo-box">
+      <a href="index.html">
+        <img src="stardust.png" alt="Stardust Logo" class="logo" />
+      </a>
+      <div class="title">
+        <span class="stardust">STARDUST</span>
+        <span class="portal">PORTAL GAMES</span>
+      </div>
+    </div>
+
+    <!-- Menu centralizado -->
+    <nav>
+      <ul>
+        <li><a href="noticias.html">NOTÍCIAS</a></li>
+        <li class="dropdown">
+          <a href="#" class="empresa">
+            EMPRESA <span class="seta"></span>
+          </a>
+          <ul class="submenu">
+            <li><a href="sobre.html">Sobre Nós</a></li>
+            <li><a href="redes.html">Redes Sociais</a></li>
+          </ul>
+        </li>
+        <li><a href="loja1.html">LOJA</a></li>
+        <li class="dropdown">
+          <a href="#" class="exclamacao">
+            ! <span class="seta"></span>
+          </a>
+          <ul class="submenu">
+            <li><a href="login.html">Conta</a></li>
+            <li><a href="suporte.html">Suporte</a></li>
+            <li class="dropdown">
+              <a href="#">Configurações <span class="seta"></span></a>
+              <ul class="submenu">
+                <li><a href="#"><img src="brasil.jpg" alt="PT" class="flag" /> PT</a></li>
+                <li><a href="#"><img src="eua.jpg" alt="ING" class="flag" /> ING</a></li>
+                <li><a href="#"><img src="espanha.jpg" alt="ESP" class="flag" /> ESP</a></li>
+                <li><a href="#"><img src="china.jpg" alt="MD" class="flag" /> MD</a></li>
+                <li class="tema">
+                  Tema:
+                  <button class="theme-btn" data-theme="dark">Escuro</button>
+                  <button class="theme-btn" data-theme="light">Claro</button>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+<div class="hamburger">
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+
+
+    <!-- Lupa no canto superior direito -->
+    <div class="icons">
+      <a href="#" class="search-toggle">
+        <img src="lupa.png" alt="Pesquisar" class="icon" />
+      </a>
+      <input type="text" class="search-bar" placeholder="Pesquisar..." />
+    </div>
+  </header>
+
+  <!-- SEÇÃO POPPY PLAYTIME -->
+  <main class="poppy-section">
+    <div class="poppy-container">
+
+      <!-- IMAGEM PRINCIPAL -->
+      <div class="poppy-main-image" id="main-image-container">
+        <img src="Poppy4.avif" alt="Poppy Playtime 4" id="main-image" data-description="Poppy Playtime 4 é a nova sequência do famoso jogo de terror e aventura. Prepare-se para enfrentar novos desafios sombrios, resolver enigmas intrigantes e descobrir os segredos que cercam a fábrica abandonada. Com gráficos melhorados e uma história envolvente, o jogo promete momentos de pura tensão e adrenalina. Está pronto para mais esse capítulo assustador?" />
+      </div>
+
+      <!-- DESCRIÇÃO -->
+      <div class="poppy-description" id="main-description">
+        <p><span class="first-letter">P</span>oppy Playtime 4 é a nova sequência do famoso jogo de terror e aventura. Prepare-se para enfrentar novos desafios sombrios, resolver enigmas intrigantes e descobrir os segredos que cercam a fábrica abandonada. Com gráficos melhorados e uma história envolvente, o jogo promete momentos de pura tensão e adrenalina. Está pronto para mais esse capítulo assustador?</p>
+      </div>
+
+      <!-- MINIATURAS -->
+      <div class="poppy-gallery">
+        <img src="Poppy2.avif" alt="Poppy Playtime 2" class="gallery-thumb" data-description="Poppy Playtime 2 aprofunda ainda mais a atmosfera sombria do primeiro jogo. Novos personagens, brinquedos macabros e mecânicas de jogo são introduzidos enquanto você tenta escapar de locais cada vez mais perigosos. Prepare-se para muitos sustos, armadilhas e mistérios reveladores." />
+        <img src="Poppy3.webp" alt="Poppy Playtime 3" class="gallery-thumb" data-description="Poppy Playtime 3 continua a história em um novo cenário horripilante. A tensão aumenta com novos quebra-cabeças e inimigos mais perigosos. O terror psicológico é aprofundado, enquanto segredos sombrios sobre a origem dos brinquedos começam a emergir. Você conseguirá sobreviver?" />
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    // Barra de pesquisa toggle
+    const searchToggle = document.querySelector('.search-toggle');
+    const searchBar = document.querySelector('.search-bar');
+
+    searchToggle.addEventListener('click', e => {
+      e.preventDefault();
+      searchBar.classList.toggle('active');
+      if (searchBar.classList.contains('active')) searchBar.focus();
+    });
+
+    // Mudança de tema
+    const themeButtons = document.querySelectorAll('.theme-btn');
+    themeButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const theme = btn.getAttribute('data-theme');
+        document.body.className = theme === 'dark' ? 'theme-dark' : 'theme-light';
+      });
+    });
+
+    // TROCA ENTRE IMAGEM PRINCIPAL E MINIATURAS (com descrição)
+    const mainImage = document.getElementById('main-image');
+    const mainDescription = document.getElementById('main-description');
+    const galleryThumbs = document.querySelectorAll('.gallery-thumb');
+
+    galleryThumbs.forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        // Salva dados atuais da principal
+        const tempSrc = mainImage.src;
+        const tempDesc = mainImage.getAttribute('data-description');
+
+        // Troca imagem principal com a thumb clicada
+        mainImage.src = thumb.src;
+        mainImage.setAttribute('data-description', thumb.getAttribute('data-description'));
+
+        // Troca descrição no HTML
+        const newDescription = thumb.getAttribute('data-description');
+        mainDescription.innerHTML = `<p><span class="first-letter">${newDescription.charAt(0)}</span>${newDescription.slice(1)}</p>`;
+
+        // Atualiza thumb clicada com a imagem e descrição anteriores
+        thumb.src = tempSrc;
+        thumb.setAttribute('data-description', tempDesc);
+      });
+    });
+  </script>
+
+<!-- Barra de pesquisa fixa no topo esquerdo dentro da área azul -->
+<div class="top-left-search">
+  <div class="support-box">
+    <h2>BUSCAR</h2>
+    <form class="support-bar" action="https://www.google.com/search" method="get" target="_blank">
+      <input type="text" name="q" placeholder="BUSCAR JOGOS" />
+      <button type="submit">
+        <img src="lupa.png" alt="Buscar" />
+      </button>
+    </form>
+  </div>
+</div>
+
+<script>
+  const hamburger = document.querySelector('.hamburger');
+  const menu = document.querySelector('nav ul');
+
+  hamburger.addEventListener('click', () => {
+    menu.classList.toggle('active');
+  });
+
+  // ----- ATIVAR SUBMENUS POR TOQUE -----
+  const dropdowns = document.querySelectorAll('.dropdown > a');
+
+  dropdowns.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const parent = link.parentElement;
+
+      // só executa em mobile
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        parent.classList.toggle('open');
+      }
+    });
+  });
+</script>
+
+
+</script>
+
+</body>
+</html>
